@@ -578,14 +578,18 @@
   ;
 
   init();
-  <audio id="bgm" loop>
+    init();
+</script>
+
+<!-- AUDIO (DI LUAR SCRIPT) -->
+<audio id="bgm" loop>
   <source src="helo/lagu.mp3" type="audio/mpeg">
 </audio>
 
 <script>
   const audio = document.getElementById("bgm");
 
-  // coba autoplay
+  // autoplay (kadang diblock browser)
   window.addEventListener("load", () => {
     audio.volume = 0.3;
 
@@ -594,7 +598,7 @@
     });
   });
 
-  // fallback pasti jalan
+  // fallback: pasti jalan saat klik
   document.body.addEventListener("click", () => {
     audio.play();
   }, { once: true });
