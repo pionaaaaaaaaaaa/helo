@@ -578,32 +578,6 @@
   ;
 
   init();
-  </script>
-
-<!-- AUDIO -->
-<audio controls>
-  <source src="lagu1.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-  const audio = document.getElementById("bgm");
-  let sudahPlay = false;
-
-  // fungsi play sekali aja
-  function playMusicOnce() {
-    if (!sudahPlay) {
-      audio.volume = 0.3;
-      audio.play();
-      sudahPlay = true;
-    }
-  }
-
-  // cukup 1 klik dimana saja
-  document.addEventListener("click", playMusicOnce);
-
-  // support HP (kadang butuh ini)
-  document.addEventListener("touchstart", playMusicOnce);
-  init();
 </script>
 </body>
 </html>
