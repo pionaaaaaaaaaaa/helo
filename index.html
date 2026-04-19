@@ -578,28 +578,26 @@
   ;
 
   init();
-  <audio id="bgm" autoplay loop muted>
-  <source src="lagu.mp3" type="audio/mpeg">
+  <audio id="bgm" loop>
+  <source src="./lagu.mp3" type="audio/mpeg">
 </audio>
 
 <script>
   const audio = document.getElementById("bgm");
 
-  // coba langsung play (autoplay)
+  // coba autoplay
   window.addEventListener("load", () => {
-    audio.muted = false;
     audio.volume = 0.3;
 
     audio.play().catch(() => {
-      console.log("Autoplay diblok, nunggu interaksi...");
+      console.log("Autoplay gagal, nunggu klik...");
     });
   });
 
-  // fallback kalau autoplay gagal
-  document.addEventListener("click", () => {
+  // fallback pasti jalan
+  document.body.addEventListener("click", () => {
     audio.play();
   }, { once: true });
-</script>
 </script>
 </body>
 </html>
