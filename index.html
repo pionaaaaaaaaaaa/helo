@@ -578,30 +578,32 @@
   ;
 
   init();
-    init();
-</script>
+  </script>
 
-<!-- AUDIO (DI LUAR SCRIPT) -->
+<!-- AUDIO -->
 <audio id="bgm" loop>
-  <source src="helo/lagu.mp3" type="audio/mpeg">
+  <source src="lagu.mp3" type="audio/mpeg">
 </audio>
 
 <script>
   const audio = document.getElementById("bgm");
+  let sudahPlay = false;
 
-  // autoplay (kadang diblock browser)
-  window.addEventListener("load", () => {
-    audio.volume = 0.3;
+  // fungsi play sekali aja
+  function playMusicOnce() {
+    if (!sudahPlay) {
+      audio.volume = 0.3;
+      audio.play();
+      sudahPlay = true;
+    }
+  }
 
-    audio.play().catch(() => {
-      console.log("Autoplay gagal, nunggu klik...");
-    });
-  });
+  // cukup 1 klik dimana saja
+  document.addEventListener("click", playMusicOnce);
 
-  // fallback: pasti jalan saat klik
-  document.body.addEventListener("click", () => {
-    audio.play();
-  }, { once: true });
+  // support HP (kadang butuh ini)
+  document.addEventListener("touchstart", playMusicOnce);
 </script>
+
 </body>
 </html>
